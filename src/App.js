@@ -46,7 +46,11 @@ function App() {
   }, [])
 
   useEffect(() => {
-    Axios.get("https://cheatsheet-mysql.herokuapp.com/login").then((response) => {
+    Axios.get("https://cheatsheet-mysql.herokuapp.com/login", {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => {
         if (response.data.loggedIn === true) {
             setLoginState(true)
             secureLocalStorage.setItem('LOGIN_STATE', {value: true})

@@ -15,7 +15,11 @@ function HomeScreen({dataUser, setDataUser, loginState}) {
   }
   
   useEffect(() => {
-    Axios.get('https://cheatsheet-mysql.herokuapp.com/getAllCheats')
+    Axios.get('https://cheatsheet-mysql.herokuapp.com/getAllCheats', {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
     .then((response) => {
         if (response.data === false) {
             const temp = createError("Connection failed")

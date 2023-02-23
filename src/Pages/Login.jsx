@@ -23,10 +23,14 @@ function Login({setUser, setLoginStateParent}) {
         const temp = createError("Please fill in the fields before validating")
         setError(temp)
     } else {
-        Axios.post('https://cheatsheet-mysql.herokuapp.com/login',{
+        Axios.post('https://cheatsheet-mysql.herokuapp.com/login',{data:{
             username: username,
             password: password,
-        }).then((response) => {
+        },
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          }).then((response) => {
             if (response.data === false) {
                 const temp = createError("Connection failed")
                 setPassword("")
