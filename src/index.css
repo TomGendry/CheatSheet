@@ -1,13 +1,67 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, html {
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    background-color: #080A1A;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input:focus, textarea:focus, select:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Basic class fot Tailwind */
+.linear-bg {
+    background: linear-gradient(269.82deg, #07091C00 0.17%, #080A1AD6 99.87%)
+}
+
+.hoveres {
+    @apply hidden;
+}
+
+.hovered:hover .hoveres {
+    @apply flex-colo;
+}
+
+.flex-colo {
+    @apply flex flex-col justify-center items-center;
+}
+
+.flex-rows {
+    @apply flex flex-row justify-center items-center;
+}
+
+.flex-btn {
+    @apply flex justify-between items-center;
+}
+
+.flex-btn2 {
+    @apply flex justify-start items-center;
+}
+
+.flex-btn3 {
+    @apply flex justify-end items-center;
+}
+
+.transitions {
+    @apply transition duration-200 ease-in;
+}
+
+.zIndex {
+    z-index: 1000;
+}
+
+.container {
+    width: 95%;
+}
+
+.newsITEM {
+    border-radius: 43px;
+background: linear-gradient(145deg, #101437, #131841);
+box-shadow:  9px 9px 0px #070918,
+             -9px -9px 0px #1d2362;
 }
