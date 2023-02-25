@@ -35,7 +35,7 @@ function HomeScreen({dataUser, setDataUser, loginState}) {
 
   return (
     <div className='container mx-auto min-h-screen px-2 mb-6'>
-      COUCOU
+      COUCOU C UN TEST
       <Banner setDataUser={setDataUser} dataUser={dataUser} loginState={loginState} data={data}/>
       <LatestCheat setDataUser={setDataUser} dataUser={dataUser} loginState={loginState} data={data}/>      
     </div>
