@@ -49,16 +49,6 @@ function Structure({dataUser, setLoginStateParent, loginStateParent, children}) 
               <img src='/images/LogoNavbar.png' alt='Logo' className='w-full h-12 object-contain'></img>
             </Link>
           </div>
-          {/* Search Form */}
-          {/*<div className="col-span-3">
-            <form action="" className="w-full text-sm bg-dryGray rounded flex-btn gap-4">
-              <button type="submit" className="bg-subMain w-12 flex-colo h-12 rounded-l text-white ">
-                <FaSearch />
-              </button>
-              <input type="text" placeholder='Search Cheat' className='font-medium placeholder:text-border text-sm w-11/12 h-12 bg-transparent border-none px-2 text-black'/>
-            </form>
-          </div>*/}
-
           <SearchBar />
 
           {/* Menu */}
@@ -101,7 +91,7 @@ function Structure({dataUser, setLoginStateParent, loginStateParent, children}) 
         {children}
       </SideBar>
       <Footer/>
-      <MobileFooter/>
+      <MobileFooter nbrFav={nbrFav} login={login}/>
     </div>
   )
 }
