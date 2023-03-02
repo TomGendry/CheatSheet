@@ -75,8 +75,8 @@ function CheatCore({ cheat }) {
           } 
         } else if (splidDataElement[0] === "IMAGE") {
           let tempImage = splidDataElement[0].split('|-|')
-          console.log(<img src={tempImage[2]} alt="Image" />)
-          if (tempImage[0] === "Size 1") { 
+          
+          /*if (tempImage[0] === "Size 1") { 
              return <img src={tempImage[2]} alt="Image" />
           } else if (splidDataElement[1] === "Size 2") {
             return <img src={tempImage[2]} alt="Image" />           
@@ -84,7 +84,11 @@ function CheatCore({ cheat }) {
             return <img src={tempImage[2]} alt="Image" />            
           } else {
             return <img src={tempImage[2]} alt="Image" />
-          }
+          }*/
+          return <>
+          {tempImage[2]}
+          <img {...tempImage[2].props} />
+          </>
         }
         return null; // ignore any non-title elements
       });
