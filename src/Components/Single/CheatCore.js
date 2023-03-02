@@ -14,6 +14,8 @@ function CheatCore({ cheat }) {
       splitData.shift();
       const newData = splitData.map((element) => {
         let splidDataElement = element.split("|:|");
+        console.log(splidDataElement)
+        console.log(element.split("|-|"))
         if (splidDataElement[0] === "TITLE") {
           if (splidDataElement[1] === "H1") {
             return <h1 className="xl:text-4xl truncate font-sans sm:text-2xl text-2xl font-bold my-4">{splidDataElement[2]}</h1>;
@@ -75,6 +77,7 @@ function CheatCore({ cheat }) {
           } 
         } else if (splidDataElement[0] === "IMAGE") {
           let tempImage = splidDataElement[0].split('|:|')
+          console.log(splidDataElement[0])
           
           /*if (tempImage[0] === "Size 1") { 
              return <img src={tempImage[2]} alt="Image" />
