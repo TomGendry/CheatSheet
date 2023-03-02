@@ -15,7 +15,6 @@ function CheatCore({ cheat }) {
       const newData = splitData.map((element) => {
         let splidDataElement = element.split("|:|");
         console.log(splidDataElement)
-        console.log(element.split("|-|"))
         if (splidDataElement[0] === "TITLE") {
           if (splidDataElement[1] === "H1") {
             return <h1 className="xl:text-4xl truncate font-sans sm:text-2xl text-2xl font-bold my-4">{splidDataElement[2]}</h1>;
@@ -76,28 +75,15 @@ function CheatCore({ cheat }) {
             return <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
-          let tempImage = splidDataElement[0].split('|:|')
-          console.log(splidDataElement[0])
-          
-          /*if (tempImage[0] === "Size 1") { 
-             return <img src={tempImage[2]} alt="Image" />
+          if (tempImage[0] === "Size 1") { 
+             return <img src={splidDataElement[2]} alt="Image" />
           } else if (splidDataElement[1] === "Size 2") {
-            return <img src={tempImage[2]} alt="Image" />           
+            return <img src={splidDataElement[2]} alt="Image" />           
           } else if (splidDataElement[1] === "Size 3") {
-            return <img src={tempImage[2]} alt="Image" />            
+            return <img src={splidDataElement[2]} alt="Image" />            
           } else {
-            return <img src={tempImage[2]} alt="Image" />
-          }*/
-          console.log("ALL",tempImage)
-          console.log("0",tempImage[0])
-          console.log("1",tempImage[1])
-          console.log("2",tempImage[2])
-          console.log("TYPEOF 1",typeof tempImage[1])
-          console.log("TYPEOF 2",typeof tempImage[2])
-          console.log("TYPEOF 3",typeof tempImage[3])
-          return <>
-          {tempImage[2]}
-          </>
+            return <img src={splidDataElement[2]} alt="Image" />
+          }
         }
         return null; // ignore any non-title elements
       });
