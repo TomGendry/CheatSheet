@@ -55,7 +55,8 @@ function ModifyCheat() {
             } else if (splidDataElement[0] === "LIST" || splidDataElement[0] === "TABLE") {
                 return JSON.parse(splidDataElement[1])
             } else if (splidDataElement[0] === "IMAGE") {
-
+              const fileFromURL = createFileFromUrl(splidDataElement[2])
+              return {type: "IMAGE", typeImage: splidDataElement[1], image: fileFromURL, modify: false, url: splidDataElement[2]}
             }
         });
         setCoreData(newData)
@@ -70,6 +71,15 @@ function ModifyCheat() {
         
     }
   }, []);
+
+  function createFileFromUrl(url) {
+    return fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const fileName = url.substring(url.lastIndexOf('/') + 1);
+        return new File([blob], fileName);
+      });
+  }
 
   const handleOpenTableModal = () => {
     window.scrollTo({
@@ -199,13 +209,18 @@ function ModifyCheat() {
           let temp = "|-|" + item.type + "|:|" + (item.typeTitle ? item.typeTitle : item.typeText) + "|:|" + (item.title ? item.title : item.text);
           finalToBase64 = finalToBase64 + temp;
         } else if (item.type === "IMAGE") {
-          const file = item.image;
-          const formData = new FormData();
-          formData.append('file', file);
-    
-          const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
-          if (response.data !== false) {
-            let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data;
+          if (item.modify === true) {
+            const file = item.image;
+            const formData = new FormData();
+            formData.append('file', file);
+      
+            const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
+            if (response.data !== false) {
+              let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data;
+              finalToBase64 = finalToBase64 + temp;
+            }
+          } else {
+            let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + item.url;
             finalToBase64 = finalToBase64 + temp;
           }
         }

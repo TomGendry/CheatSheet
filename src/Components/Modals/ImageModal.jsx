@@ -28,13 +28,13 @@ function ImageModal({modifyData, setModifyData, coreData, setCoreData, setIsOpen
     const modifyImage = () => {
         setIsOpenImageModal(false)
         const newData = [...coreData];
-        newData[saveModify] = { type: "IMAGE", typeImage: typeImage, image: image };
+        newData[saveModify] = { type: "IMAGE", typeImage: typeImage, image: image, modify: true };
         setCoreData(newData);
     }
 
     const addImage = () => {
         setIsOpenImageModal(false)
-        setCoreData([...coreData, { type: "IMAGE", typeImage: typeImage, image: image }]);
+        setCoreData([...coreData, { type: "IMAGE", typeImage: typeImage, image: image}]);
       };
 
       const typeImageList = [
