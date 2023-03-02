@@ -56,8 +56,8 @@ function ModifyCheat() {
                 return JSON.parse(splidDataElement[1])
             } else if (splidDataElement[0] === "IMAGE") {
               const fileFromURL = createFileFromUrl(splidDataElement[2])
-              console.log(fileFromURL)
-              console.log(splidDataElement[2])
+              console.log("CONV",fileFromURL)
+              console.log("URL",splidDataElement[2])
               return {type: "IMAGE", typeImage: splidDataElement[1], image: fileFromURL, modify: false, url: splidDataElement[2]}
             }
         });
