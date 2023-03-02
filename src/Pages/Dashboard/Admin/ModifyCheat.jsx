@@ -486,7 +486,7 @@ function ModifyCheat() {
                           <span>Element {index} : IMAGE {data?.image.type}<button onClick={() => modifyElement(index, "IMAGE")} className="bg-dry rounded ml-3 p-3 text-white">Modify</button><button onClick={() => deleteElement(index)} className="bg-subMain rounded ml-3 p-3 text-white">Delete</button></span>
                           <img className="mx-auto h-20 w-auto" src={URL.createObjectURL(data?.image)} alt={data?.image.name} />
                           {console.log(URL.createObjectURL(data?.image))}
-                          {console.log(data?)}
+                          {console.log(data)}
                           <span>{data?.image.name}</span>
                           <span className="float-right mr-3 mt-1">
                               <div className="flex flex-col justify-between">
