@@ -62,6 +62,7 @@ function ModifyCheat() {
               });
             }
         });
+        console.log("DATA",newData)
         setCoreData(newData)
         Axios.get('https://cheatsheet-mysql.herokuapp.com/getAllCategories')
         .then((response) => {
