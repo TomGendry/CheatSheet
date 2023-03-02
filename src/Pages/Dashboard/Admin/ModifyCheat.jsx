@@ -223,7 +223,7 @@ function ModifyCheat() {
       
             const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
             if (response.data !== false) {
-              let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data;
+              let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data.url;
               finalToBase64 = finalToBase64 + temp;
             }
           } else {
