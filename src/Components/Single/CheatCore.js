@@ -75,7 +75,7 @@ function CheatCore({ cheat }) {
             return <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
-          if (tempImage[0] === "Size 1") { 
+          if (splidDataElement[1] === "Size 1") { 
              return <img src={splidDataElement[2]} alt="Image" />
           } else if (splidDataElement[1] === "Size 2") {
             return <img src={splidDataElement[2]} alt="Image" />           
