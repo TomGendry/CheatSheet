@@ -46,24 +46,27 @@ function ModifyCheat() {
         let temp = atob(location.state.core)
         let splitData = temp.split("|-|");
         splitData.shift();
-        const newData = splitData.map((element) => {
-            let splidDataElement = element.split("|:|");
-            if (splidDataElement[0] === "TITLE") {
-                return { type: "TITLE", typeTitle: splidDataElement[1], title: splidDataElement[2]};
-            } else if (splidDataElement[0] === "TEXT") {
-                return { type: "TEXT", typeText: splidDataElement[1], text: splidDataElement[2]};
-            } else if (splidDataElement[0] === "LIST" || splidDataElement[0] === "TABLE") {
-                return JSON.parse(splidDataElement[1])
-            } else if (splidDataElement[0] === "IMAGE") {
-              const fileFromURL = createFileFromUrl(splidDataElement[2])
-              fileFromURL.then((file) => {
-                console.log("FILE",file)
-                return {type: "IMAGE", typeImage: splidDataElement[1], image: file, modify: false, url: splidDataElement[2]}
-              });
-            }
+        const promises = splitData.map((element) => {
+          let splidDataElement = element.split("|:|");
+          if (splidDataElement[0] === "TITLE") {
+            return { type: "TITLE", typeTitle: splidDataElement[1], title: splidDataElement[2]};
+          } else if (splidDataElement[0] === "TEXT") {
+            return { type: "TEXT", typeText: splidDataElement[1], text: splidDataElement[2]};
+          } else if (splidDataElement[0] === "LIST" || splidDataElement[0] === "TABLE") {
+            return JSON.parse(splidDataElement[1])
+          } else if (splidDataElement[0] === "IMAGE") {
+            const fileFromURL = createFileFromUrl(splidDataElement[2])
+            return fileFromURL.then((file) => {
+              console.log("FILE",file)
+              return {type: "IMAGE", typeImage: splidDataElement[1], image: file, modify: false, url: splidDataElement[2]}
+            });
+          }
         });
-        console.log("DATA",newData)
-        setCoreData(newData)
+        
+        Promise.all(promises).then((newData) => {
+          console.log("DATA",newData);
+          setCoreData(newData);
+        });
         Axios.get('https://cheatsheet-mysql.herokuapp.com/getAllCategories')
         .then((response) => {
             if (response.data !== false) {
