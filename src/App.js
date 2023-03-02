@@ -37,6 +37,7 @@ function App() {
   const [modifyCheat, setModifyCheat] = useState(<ModifyCheat />)
   const [dataLogin, setDataLogin] = useState(null)
   const [dataUser, setDataUser] = useState([])
+  const [errorDB, setErrorDB] = useState(false)
 
   useEffect(() => {
     const dataLogin = secureLocalStorage.getItem('LOGIN_STATE')
@@ -47,6 +48,7 @@ function App() {
 
   useEffect(() => {
     Axios.get("https://cheatsheet-mysql.herokuapp.com/login").then((response) => {
+        setErrorDB(false)
         if (response.data.loggedIn === true) {
             setLoginState(true)
             secureLocalStorage.setItem('LOGIN_STATE', {value: true})
@@ -62,6 +64,9 @@ function App() {
           secureLocalStorage.removeItem('LOGIN_STATE')
         }
     })
+    .catch(function (error) {
+      setErrorDB(true)
+    })
 
     if (loginState === true) {
       setProfile(<Profile user={dataLogin}/>)
@@ -75,25 +80,32 @@ function App() {
   return (
     <Router>
       <Structure dataUser={dataUser}setLoginStateParent={setLoginState} loginStateParent={loginState}>
-        <Routes>
-          <Route path='/' element={<HomeScreen dataUser={dataUser} setDataUser={setDataUser} loginState={loginState}/>} />
-          <Route path='/news' element={<News />} />
-          <Route path='/cheats' element={<CheatsPage />} />
-          <Route path='/cheat/:id' element={<SingleCheat loginState={loginState} dataUser={dataUser} setDataUser={setDataUser}/>} />
-          <Route path='/contact-us' element={<ContactUs />} />
-          <Route path='/login' element={<Login setUser={setDataLogin} setLoginStateParent={setLoginState}/>} />
-          <Route path='/register' element={<Register setUser={setDataLogin} setLoginStateParent={setLoginState}/>} />
-          <Route path='/profile' element={profile} />
-          <Route path='/password' element={password} />
-          <Route path='/favorites' element={favorites} />
-          <Route path='/cheatslist' element={cheatLists} />
-          <Route path='/dashboard' element={dashboard} />
-          <Route path='/categories' element={categories} />
-          <Route path='/modifycheat' element={modifyCheat} />
-          <Route path='/users' element={users} />
-          <Route path='/addcheat' element={addCheat} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        {errorDB === false ?
+        (
+          <Routes>
+            <Route path='/' element={<HomeScreen dataUser={dataUser} setDataUser={setDataUser} loginState={loginState}/>} />
+            <Route path='/news' element={<News />} />
+            <Route path='/cheats' element={<CheatsPage />} />
+            <Route path='/cheat/:id' element={<SingleCheat loginState={loginState} dataUser={dataUser} setDataUser={setDataUser}/>} />
+            <Route path='/contact-us' element={<ContactUs />} />
+            <Route path='/login' element={<Login setUser={setDataLogin} setLoginStateParent={setLoginState}/>} />
+            <Route path='/register' element={<Register setUser={setDataLogin} setLoginStateParent={setLoginState}/>} />
+            <Route path='/profile' element={profile} />
+            <Route path='/password' element={password} />
+            <Route path='/favorites' element={favorites} />
+            <Route path='/cheatslist' element={cheatLists} />
+            <Route path='/dashboard' element={dashboard} />
+            <Route path='/categories' element={categories} />
+            <Route path='/modifycheat' element={modifyCheat} />
+            <Route path='/users' element={users} />
+            <Route path='/addcheat' element={addCheat} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        ):(
+          <Routes>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        )}
       </Structure>
     </Router>
   );
