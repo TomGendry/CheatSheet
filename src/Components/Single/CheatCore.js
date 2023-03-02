@@ -79,9 +79,9 @@ function CheatCore({ cheat }) {
           if (tempImage[0] === "Size 1") { 
              return <img src={`${tempImage[2]}`} />
           } else if (splidDataElement[1] === "Size 2") {
-            
+            return <img src={`${tempImage[2]}`} />            
           } else if (splidDataElement[1] === "Size 3") {
-            
+            return <img src={`${tempImage[2]}`} />            
           }
         }
         return null; // ignore any non-title elements
