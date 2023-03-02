@@ -85,9 +85,15 @@ function CheatCore({ cheat }) {
           } else {
             return <img src={tempImage[2]} alt="Image" />
           }*/
+          console.log("ALL",tempImage)
+          console.log("0",tempImage[0])
+          console.log("1",tempImage[1])
+          console.log("2",tempImage[2])
+          console.log("TYPEOF 1",typeof tempImage[1])
+          console.log("TYPEOF 2",typeof tempImage[2])
+          console.log("TYPEOF 3",typeof tempImage[3])
           return <>
           {tempImage[2]}
-          <img {...tempImage[2].props} />
           </>
         }
         return null; // ignore any non-title elements
