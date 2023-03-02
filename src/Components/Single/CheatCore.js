@@ -74,7 +74,7 @@ function CheatCore({ cheat }) {
             return <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
-          let tempImage = splidDataElement[0].split('|-|')
+          let tempImage = splidDataElement[0].split('|:|')
           
           /*if (tempImage[0] === "Size 1") { 
              return <img src={tempImage[2]} alt="Image" />
