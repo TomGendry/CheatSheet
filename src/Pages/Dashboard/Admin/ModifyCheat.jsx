@@ -191,6 +191,7 @@ function ModifyCheat() {
     let finalToBase64 = "";
   
     const promises = coreData.map(async (item) => {
+      console.log(item)
       if (item.type === "TABLE" || item.type === "LIST") {
         let temp = JSON.stringify(item);
         finalToBase64 = finalToBase64 + "|-|" + item.type + "|:|" + temp;

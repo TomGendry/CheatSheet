@@ -9,6 +9,7 @@ import ImageModal from "../../../Components/Modals/ImageModal";
 import { Input, Select } from "../../../Components/UsedInput";
 import Axios from "axios";
 import axios from "axios";
+import cloudinary from "cloudinary-core";
 
 function AddCheat() {
   const [coreData, setCoreData] = useState([]);
@@ -27,7 +28,7 @@ function AddCheat() {
   const [category, setCategory] = useState("LINUX")
   const [categoryList, setCategoryList] = useState([])
   const [error, setError] = useState("");
-
+  
   const typeLanguageList = [
     {
         title: "English",
@@ -88,7 +89,7 @@ function AddCheat() {
         behavior: "smooth"
       });
     setIsOpenImageModal(true);
-  };
+  };  
 
   const submitNewPage = async () => {
     let finalToBase64 = "";
@@ -105,11 +106,13 @@ function AddCheat() {
         const formData = new FormData();
         formData.append('file', file);
   
-        const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
+        /*const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
         if (response.data !== false) {
           let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data;
           finalToBase64 = finalToBase64 + temp;
-        }
+        }*/
+
+
       }
     });
   
@@ -122,11 +125,11 @@ function AddCheat() {
         category: category,
         core: btoa(finalToBase64)
     }).then(() => {
-        /*setTitle("")
+        setTitle("")
         setDescription("")
         setCategory("")
         setCoreData([])
-        setModifyData(null)*/
+        setModifyData(null)
         setError(createSuccess("A new cheat has been create !"))
     })
 
