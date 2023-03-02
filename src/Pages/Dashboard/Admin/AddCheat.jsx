@@ -105,11 +105,11 @@ function AddCheat() {
         const formData = new FormData();
         formData.append('file', file);
   
-        /*const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
+        const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
         if (response.data !== false) {
           let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data;
           finalToBase64 = finalToBase64 + temp;
-        }*/
+        }
 
 
       }
