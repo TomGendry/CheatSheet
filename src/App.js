@@ -99,12 +99,12 @@ function App() {
               <Route path='/modifycheat' element={modifyCheat} />
               <Route path='/users' element={users} />
               <Route path='/addcheat' element={addCheat} />
-              <Route path='*' element={<NotFound />} />
+              <Route path='*' element={<NotFound db={false}/>} />
             </Routes>
           </Structure>
         ):(
           <Routes>
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<NotFound db={true}/>} />
           </Routes>
         )}
     </Router>
