@@ -9,7 +9,6 @@ import ImageModal from "../../../Components/Modals/ImageModal";
 import { Input, Select } from "../../../Components/UsedInput";
 import Axios from "axios";
 import axios from "axios";
-import cloudinary from "cloudinary-core";
 
 function AddCheat() {
   const [coreData, setCoreData] = useState([]);
