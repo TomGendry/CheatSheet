@@ -74,14 +74,16 @@ function CheatCore({ cheat }) {
             return <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
-          console.log(splidDataElement[2])
           let tempImage = splidDataElement[0].split('|-|')
+          console.log(<img src={`${tempImage[2]}`} alt="IMAGE"/>)
           if (tempImage[0] === "Size 1") { 
-             return <img src={`${tempImage[2]}`} />
+             return <img src={`${tempImage[2]}`} alt="IMAGE"/>
           } else if (splidDataElement[1] === "Size 2") {
-            return <img src={`${tempImage[2]}`} />            
+            return <img src={`${tempImage[2]}`} alt="IMAGE"/>            
           } else if (splidDataElement[1] === "Size 3") {
-            return <img src={`${tempImage[2]}`} />            
+            return <img src={`${tempImage[2]}`} alt="IMAGE"/>            
+          } else {
+            return <img src={`${tempImage[2]}`} alt="IMAGE"/>
           }
         }
         return null; // ignore any non-title elements
