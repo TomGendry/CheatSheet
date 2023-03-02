@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FlexCheatItems from "../FlexCheatItems";

@@ -9,7 +9,6 @@ function CheatsPage() {
   const [data, setData] = useState([])
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('')
-  const [resultNbr, setResultNbr] = useState(0)
   let arrayFiltered = []
 
   function createError(phrase) {

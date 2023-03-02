@@ -37,9 +37,6 @@ function CheatCore({ cheat }) {
         } else if (splidDataElement[0] === "TABLE") {
           let tempTable = JSON.parse(splidDataElement[1])
           let dataCol = Object.values(tempTable.dataCol)
-          let dataRow = Object.values(tempTable.dataRow)
-          let colNBR = tempTable.colNBR
-          let rowNBR = tempTable.rowNBR
           
           return <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

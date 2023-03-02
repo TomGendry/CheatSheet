@@ -41,8 +41,7 @@ function SearchBar() {
                     const title = item.title.toLowerCase()
                     const category = item.category.toLowerCase()
                     return searchTerm && (title.startsWith(searchTerm) || category.startsWith(searchTerm))&& title !== searchTerm
-                }).
-                map((item, index) => <div onClick={() => onSearch(item.id)} key={index} className='cursor-pointer hover:bg-dryGrayHover drowdown-row pl-3 py-3 border-b border-border border-opacity-20 text-gray-700'>
+                }).map((item, index) => <div onClick={() => onSearch(item.id)} key={index} className='cursor-pointer hover:bg-dryGrayHover drowdown-row pl-3 py-3 border-b border-border border-opacity-20 text-gray-700'>
                     <span className='text-subMain'>{item.category}</span> <span className='text-star'>|</span> <span className='font-semibold'>{item.title}</span>
                 </div>)}
             </div>

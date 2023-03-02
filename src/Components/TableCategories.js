@@ -8,7 +8,7 @@ const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
 let Admin = "";
 
 const Rows = (item, i, users, OnEditFunction) => {
-    if (item.admin == 1) {
+    if (item.admin === 1) {
         Admin = "bg-star"
     } else {
         Admin = ""
