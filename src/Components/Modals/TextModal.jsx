@@ -26,7 +26,7 @@ function TextModal({modifyData, setModifyData, coreData, setCoreData, setIsOpenT
     useEffect(() => {
         if (modifyData != null) {
             const data = coreData[modifyData];
-            setTypeText(data.type)
+            setTypeText(data.typeText)
             setText(data.text)
             setSaveModify(modifyData)
             setModifyData(null)
