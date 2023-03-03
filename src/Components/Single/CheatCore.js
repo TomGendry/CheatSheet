@@ -92,7 +92,7 @@ function CheatCore({ cheat }) {
       };
       
       setCoreData(newData);
-      console.log(coreData)
+      console.log(newData)
 
     }
   }, [])
