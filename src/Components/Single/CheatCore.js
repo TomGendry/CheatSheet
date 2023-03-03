@@ -12,6 +12,7 @@ function CheatCore({ cheat }) {
       temp = atob(cheat.core);
       let splitData = temp.split("|-|");
       splitData.shift();
+      console.log("DATA", newData)
       const newData = splitData.map((element) => {
         let splidDataElement = element.split("|:|");
         console.log(splidDataElement)
@@ -28,7 +29,7 @@ function CheatCore({ cheat }) {
           let typeList = tempList.typeList
           let dataRow = Object.values(tempList.dataRow)
           const listAsLI = dataRow.map((itemList) => {
-            return <li>itemList</li>
+            return <li>{itemList}</li>
           })
           if (typeList === "POINT") {
             return <ul className='my-2 ml-4 max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400'>{listAsLI}</ul>
@@ -85,9 +86,13 @@ function CheatCore({ cheat }) {
             return <img src={splidDataElement[2]} alt="Image" />
           }
         }
-        return null; // ignore any non-title elements
+        return null;
       });
       setCoreData(newData);
+
+      /** ASYNC AWAIT */
+
+
     }
   }, [])
 
