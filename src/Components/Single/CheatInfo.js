@@ -63,7 +63,7 @@ function CheatInfo({loginState, dataUser, setDataUser, cheat, setModalOpen}) {
   }
 
   return (
-    <div className='w-full xl:h-screen relative text-white'>
+    <div className='w-full xl:h-[calc(70vh)] relative text-white'>
       <img src={`/images/cheats/${cheat?.category}.jpg`} alt={cheat.title} className="w-full hidden xl:inline-block h-full object-cover" />
 
       <div className="xl:bg-main bg-dry flex-colo xl:bg-opacity-90 xl:absolute top-0 left-0 right-0 bottom-0">
