@@ -91,7 +91,7 @@ function AddCheat() {
   };  
 
   const submitNewPage = async () => {
-    let finalToBase64 = "";
+    /*let finalToBase64 = "";
   
     const promises = coreData.map(async (item) => {
       if (item.type === "TABLE" || item.type === "LIST") {
@@ -115,7 +115,35 @@ function AddCheat() {
       }
     });
   
-    await Promise.all(promises);
+    await Promise.all(promises);*/
+    let finalToBase64 = "";
+
+    for (let i = 0; i < coreData.length; i++) {
+      const item = coreData[i];
+
+      if (item.type === "TABLE" || item.type === "LIST") {
+        let temp = JSON.stringify(item);
+        finalToBase64 = finalToBase64 + "|-|" + item.type + "|:|" + temp;
+      } else if (item.type === "TITLE" || item.type === "TEXT") {
+        let temp = "|-|" + item.type + "|:|" + (item.typeTitle ? item.typeTitle : item.typeText) + "|:|" + (item.title ? item.title : item.text);
+        finalToBase64 = finalToBase64 + temp;
+      } else if (item.type === "IMAGE") {
+        const file = item.image;
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const response = await axios.post('https://cheatsheet-mysql.herokuapp.com/upload', formData);
+          if (response.data !== false) {
+            let temp = "|-|" + item.type + "|:|" + item.typeImage + "|:|" + response.data.url;
+            finalToBase64 = finalToBase64 + temp;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+
     
     axios.post('https://cheatsheet-mysql.herokuapp.com/addCheat',{
         title: title,
