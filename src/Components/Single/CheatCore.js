@@ -92,7 +92,9 @@ function CheatCore({ cheat }) {
       };
       
       setCoreData(newData);
-      console.log(newData)
+      console.log("TEMP:", temp)
+      console.log("SPLIT:",splitData)
+      console.log("NEW:",newData)
 
     }
   }, [])
