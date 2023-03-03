@@ -13,16 +13,16 @@ function CheatCore({ cheat }) {
       let splitData = temp.split("|-|");
       splitData.shift();
       console.log("DATA", newData)
-      const newData = splitData.map((element) => {
+      const newData = splitData.map((element, index) => {
         let splidDataElement = element.split("|:|");
         console.log(splidDataElement)
         if (splidDataElement[0] === "TITLE") {
           if (splidDataElement[1] === "H1") {
-            return <h1 className="xl:text-4xl truncate font-sans sm:text-2xl text-2xl font-bold my-4">{splidDataElement[2]}</h1>;
+            return <h1 key={index} className="xl:text-4xl truncate font-sans sm:text-2xl text-2xl font-bold my-4">{splidDataElement[2]}</h1>;
           } else if (splidDataElement[1] === "H2") {
-            return <h2 className="xl:text-3xl truncate font-sans sm:text-1xl text-xm my-3">{splidDataElement[2]}</h2>;
+            return <h2 key={index} className="xl:text-3xl truncate font-sans sm:text-1xl text-xm my-3">{splidDataElement[2]}</h2>;
           } else if (splidDataElement[1] === "H3") {
-            return <h3 className="xl:text-2xl truncate font-sans sm:text-xl text-lg my-2">{splidDataElement[2]}</h3>;
+            return <h3 key={index} className="xl:text-2xl truncate font-sans sm:text-xl text-lg my-2">{splidDataElement[2]}</h3>;
           } 
         } else if (splidDataElement[0] === "LIST") {
           let tempList = JSON.parse(splidDataElement[1])
@@ -32,15 +32,15 @@ function CheatCore({ cheat }) {
             return <li>{itemList}</li>
           })
           if (typeList === "POINT") {
-            return <ul className='my-2 ml-4 max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400'>{listAsLI}</ul>
+            return <ul key={index} className='my-2 ml-4 max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400'>{listAsLI}</ul>
           } else if (typeList === "NUMBER"){
-            return <ul className='my-2 ml-4 max-w-md space-y-1 list-decimal text-gray-500 list-disc list-inside dark:text-gray-400'>{listAsLI}</ul>
+            return <ul key={index} className='my-2 ml-4 max-w-md space-y-1 list-decimal text-gray-500 list-disc list-inside dark:text-gray-400'>{listAsLI}</ul>
           }
         } else if (splidDataElement[0] === "TABLE") {
           let tempTable = JSON.parse(splidDataElement[1])
           let dataCol = Object.values(tempTable.dataCol)
           
-          return <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          return <div key={index} className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-900 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -69,21 +69,21 @@ function CheatCore({ cheat }) {
           </div>
         } else if (splidDataElement[0] === "TEXT") {
           if (splidDataElement[1] === "Classic") {
-            return <p className='font-normal text-white '>{splidDataElement[2]}</p>
+            return <p key={index} className='font-normal text-white '>{splidDataElement[2]}</p>
           } else if (splidDataElement[1] === "Citation") {
-            return <p className='relative italic font-normal text-white mx-5 my-3'><RiDoubleQuotesL className='mb-3'/>{splidDataElement[2]}<RiDoubleQuotesR className='mt-3'/></p>
+            return <p key={index} className='relative italic font-normal text-white mx-5 my-3'><RiDoubleQuotesL className='mb-3'/>{splidDataElement[2]}<RiDoubleQuotesR className='mt-3'/></p>
           } else if (splidDataElement[1] === "Code") {
-            return <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
+            return <p key={index} className='font-normal text-white mx-3 bg-code p-3 rounded'>{splidDataElement[2]}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
           if (splidDataElement[1] === "Size 1") { 
-             return <img src={splidDataElement[2]} alt="Image" />
+             return <img key={index} src={splidDataElement[2]} className="h-auto w-72" alt="Image" />
           } else if (splidDataElement[1] === "Size 2") {
-            return <img src={splidDataElement[2]} alt="Image" />           
+            return <img key={index} src={splidDataElement[2]} className="h-auto w-60" alt="Image" />           
           } else if (splidDataElement[1] === "Size 3") {
-            return <img src={splidDataElement[2]} alt="Image" />            
+            return <img key={index} src={splidDataElement[2]} className="h-auto w-48" alt="Image" />            
           } else {
-            return <img src={splidDataElement[2]} alt="Image" />
+            return <img key={index} src={splidDataElement[2]} className="h-auto w-52" alt="Image" />
           }
         }
         return null;
