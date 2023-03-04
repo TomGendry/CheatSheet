@@ -33,6 +33,7 @@ function ModifyCheat() {
   const [goUp,setGoUp] = useState(null)
   const [goDown,setGoDown] = useState(null)
   const [direction,setDirection] = useState(null)
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     
@@ -204,7 +205,7 @@ function ModifyCheat() {
   }
 
   const submitModifyPage = async () => {
-    
+    setButtonDisabled(true)
     let finalToBase64 = "";
   
     const promises = coreData.map(async (item) => {
@@ -250,6 +251,7 @@ function ModifyCheat() {
         setCoreData([])
         setModifyData(null)
         navigate("/cheatslist")
+        setButtonDisabled(false)
     }).error(() => {
       setError(createError("ERROR WHILE MODIFYING !"))
     })
@@ -509,6 +511,7 @@ function ModifyCheat() {
       {Object.keys(coreData).length > 0 && (
         <button
         onClick={submitModifyPage}
+        disabled={buttonDisabled}
         className="bg-star font-medium transitions hover:bg-main border border-star text-white py-3 px-6 rounded"
       >
         Submit new Cheat

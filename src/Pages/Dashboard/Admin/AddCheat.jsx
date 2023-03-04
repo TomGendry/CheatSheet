@@ -27,6 +27,7 @@ function AddCheat() {
   const [category, setCategory] = useState("LINUX")
   const [categoryList, setCategoryList] = useState([])
   const [error, setError] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   
   const typeLanguageList = [
     {
@@ -91,6 +92,7 @@ function AddCheat() {
   };  
 
   const submitNewPage = async () => {
+    setButtonDisabled(true)
     let finalToBase64 = "";
 
     for (let i = 0; i < coreData.length; i++) {
@@ -133,6 +135,7 @@ function AddCheat() {
         setCoreData([])
         setModifyData(null)
         setError(createSuccess("A new cheat has been create !"))
+        setButtonDisabled(false)
     })
 
   };
@@ -446,6 +449,7 @@ function AddCheat() {
       {Object.keys(coreData).length > 0 && (
         <button
         onClick={submitNewPage}
+        disabled={buttonDisabled}
         className="bg-star font-medium transitions hover:bg-main border border-star text-white py-3 px-6 rounded"
       >
         Submit new Cheat
