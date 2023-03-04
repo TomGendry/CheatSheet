@@ -15,7 +15,7 @@ function SingleCheat({loginState, dataUser, setDataUser}) {
       (m) => m.categories === cheat.categories
     )*/
     const [modalOpen, setModalOpen] = useState(false)
-    const [data, setData] = useState([])
+    const [data, setData] = useState(null)
     const [error, setError] = useState(null);
 
     function createError(phrase) {
@@ -31,7 +31,6 @@ function SingleCheat({loginState, dataUser, setDataUser}) {
           setData(response.data[0]);
           setError(null);
         } catch (err) {
-          setData(null)
           setError(createError(err));
         }
       };
@@ -42,7 +41,7 @@ function SingleCheat({loginState, dataUser, setDataUser}) {
   return (
     <>
         {error}
-        {data === null ?
+        {data ?
         <>
           <ShareModal
           modalOpen={modalOpen}
@@ -66,7 +65,7 @@ function SingleCheat({loginState, dataUser, setDataUser}) {
         :
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full" role="alert">
           <p>ERROR DATABASE</p>
-        </div>  
+      </div>  
       }
     </>
   )
