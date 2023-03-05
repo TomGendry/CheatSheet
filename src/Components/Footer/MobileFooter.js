@@ -61,7 +61,7 @@ function MobileFooter({nbrFav, setLoginStateParent, loginStateParent}) {
                             <FiHeart/>
                         </div>
                     </NavLink>
-                    <NavLink className={Hover} onClick={logout}>
+                    <NavLink className="transitions text-2xl flex-colo hover:bg-white hover:text-main text-white rounded-md px-4 py-3" onClick={logout}>
                         <BiLogOut/>
                     </NavLink>
                 </>)
