@@ -104,7 +104,8 @@ function CheatCore({ cheat }) {
 
             }
             //result = <p className='font-normal text-white mx-3 h-96 bg-code p-3 rounded'>{splidDataElement[2]}</p>
-            const temp = final.map((element) => element.props.children).join(' ');
+            //const temp = final.map((element) => element.props.children).join(' ');
+            const temp = final.reduce((prev, curr) => [prev, ' ', curr], []);
             console.log(temp)
             result = <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{temp.toString()}</p>
           } 
