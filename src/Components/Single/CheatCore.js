@@ -104,9 +104,8 @@ function CheatCore({ cheat }) {
 
             }
             //result = <p className='font-normal text-white mx-3 h-96 bg-code p-3 rounded'>{splidDataElement[2]}</p>
-            let temp = final.join(' ')
+            const temp = final.map((element) => element.props.children).join(' ');
             console.log(temp)
-            console.log(final)
             result = <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{temp.toString()}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
