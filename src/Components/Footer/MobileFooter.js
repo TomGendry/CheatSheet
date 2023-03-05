@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import secureLocalStorage  from  "react-secure-storage";
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import {BiLogOut} from 'react-icons/bi'
 
 function MobileFooter({nbrFav, setLoginStateParent, loginStateParent}) {
 
