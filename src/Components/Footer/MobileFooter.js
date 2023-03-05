@@ -3,13 +3,24 @@ import { BsCollectionPlay } from 'react-icons/bs'
 import { FiHeart, FiUserCheck } from 'react-icons/fi'
 import {AiFillHome} from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
+import secureLocalStorage  from  "react-secure-storage";
+import Axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-function MobileFooter({nbrFav, loginStateParent}) {
+function MobileFooter({nbrFav, setLoginStateParent, loginStateParent}) {
 
   const active = "bg-white text-main"
   const inActive = "transitions text-2xl flex-colo hover:bg-white hover:text-main text-white rounded-md px-4 py-3"
 
   const Hover = ({isActive}) => isActive ? `${active} ${inActive}` : inActive
+  const navigate = useNavigate()
+
+  function logout() {
+    setLoginStateParent(false)
+    secureLocalStorage.removeItem('LOGIN_STATE')
+    Axios.get("https://cheatsheet-mysql.herokuapp.com/logout")
+    navigate("/")
+  }
 
   const [login, setLogin] = useState(false)
   useEffect(() => {
@@ -40,14 +51,20 @@ function MobileFooter({nbrFav, loginStateParent}) {
                     <FiUserCheck />
                 </NavLink>)
                 ||
-                (<NavLink to="/favorites" className={Hover}>
-                    <div className="relative">
-                        <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
-                            {nbrFav}
+                (<>
+                    <NavLink to="/favorites" className={Hover}>
+                        <div className="relative">
+                            <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
+                                {nbrFav}
+                            </div>
+                            <FiHeart/>
                         </div>
-                        <FiHeart/>
-                    </div>
-                </NavLink>)}
+                    </NavLink>
+                    <button className={Hover} onClick={logout}>
+                        <BiLogOut/>
+                    </button>
+                </>)
+                }
             </div>
         </footer>
     </>

@@ -91,7 +91,7 @@ function Structure({dataUser, setLoginStateParent, loginStateParent, children}) 
         {children}
       </SideBar>
       <Footer/>
-      <MobileFooter nbrFav={nbrFav} loginStateParent={loginStateParent}/>
+      <MobileFooter nbrFav={nbrFav} setLoginStateParent={setLoginStateParent} loginStateParent={loginStateParent}/>
     </div>
   )
 }
