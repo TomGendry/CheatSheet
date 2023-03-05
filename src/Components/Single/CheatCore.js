@@ -89,14 +89,14 @@ function CheatCore({ cheat }) {
               } else if (word.toLowerCase() === "for" || word.toLowerCase() === "while" || word.toLowerCase() === "if" || word.toLowerCase() === "else"
               || word.toLowerCase() === "elif"){
                 final.push(<span style={{color: "#ED4C67"}}>{word}</span>)
-              } else if (word.toLowerCase() === "<p>" || word.toLowerCase() === "</p>" ||
-              word.toLowerCase() === "<span>" || word.toLowerCase() === "</span>" ||
-              word.toLowerCase() === "<h1>" || word.toLowerCase() === "</h1>" ||
-              word.toLowerCase() === "<h2>" || word.toLowerCase() === "</h2>" ||
-              word.toLowerCase() === "<h3>" || word.toLowerCase() === "</h3>" ||
-              word.toLowerCase() === "<div>" || word.toLowerCase() === "</div>" ||
-              word.toLowerCase() === "<img>" || word.toLowerCase() === "</img>" ||
-              word.toLowerCase() === "<strong>" || word.toLowerCase() === "</strong>") {
+              } else if (word.toLowerCase() === "<p>" || word.toLowerCase() === "<p" || word.toLowerCase() === "</p>" ||
+              word.toLowerCase() === "<span>" || word.toLowerCase() === "<span" || word.toLowerCase() === "</span>" ||
+              word.toLowerCase() === "<h1>" ||  word.toLowerCase() === "<h1" || word.toLowerCase() === "</h1>" ||
+              word.toLowerCase() === "<h2>" ||  word.toLowerCase() === "<h2" ||  word.toLowerCase() === "</h2>" ||
+              word.toLowerCase() === "<h3>" ||  word.toLowerCase() === "<h3" ||  word.toLowerCase() === "</h3>" ||
+              word.toLowerCase() === "<div>" || word.toLowerCase() === "<div" || word.toLowerCase() === "</div>" ||
+              word.toLowerCase() === "<img>" || word.toLowerCase() === "<img" || word.toLowerCase() === "</img>" ||
+              word.toLowerCase() === "<strong>" || word.toLowerCase() === "<strong" || word.toLowerCase() === "</strong>") {
                 final.push(<span style={{color: "#833471"}}>{word}</span>)
               } else {
                 final.push(<span style={{color: "#fff"}}>{word}</span>)
