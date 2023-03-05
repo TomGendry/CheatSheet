@@ -61,9 +61,9 @@ function MobileFooter({nbrFav, setLoginStateParent, loginStateParent}) {
                             <FiHeart/>
                         </div>
                     </NavLink>
-                    <button className={Hover} onClick={logout}>
+                    <NavLink to="/" className={Hover} onClick={logout}>
                         <BiLogOut/>
-                    </button>
+                    </NavLink>
                 </>)
                 }
             </div>
