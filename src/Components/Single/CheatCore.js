@@ -70,7 +70,7 @@ function CheatCore({ cheat }) {
           </div>
         } else if (splidDataElement[0] === "TEXT") {
           if (splidDataElement[1] === "Classic") {
-            result = <p className='font-normal text-white text-justify'>{`\t${splidDataElement[2]}`}</p>
+            result = <p className='font-normal text-white text-justify'>{'\t' + splidDataElement[2]}</p>
           } else if (splidDataElement[1] === "Citation") {
             result = <p className='relative italic font-normal text-white mx-5 my-3'><RiDoubleQuotesL className='mb-3'/>{splidDataElement[2]}<RiDoubleQuotesR className='mt-3'/></p>
           } else if (splidDataElement[1] === "Code") {

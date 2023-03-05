@@ -25,6 +25,7 @@ function ListModal({modifyData, setModifyData, coreData, setCoreData, setIsOpenL
         if (modifyData != null) {
             const data = coreData[modifyData];
             setDataRow(data.dataRow)
+            setRowNBR(data.dataRow.length)
             setSaveModify(modifyData)
             setModifyData(null)
             setIsModify(true)
