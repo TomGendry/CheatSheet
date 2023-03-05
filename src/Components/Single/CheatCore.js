@@ -112,7 +112,7 @@ function CheatCore({ cheat }) {
           } 
         } else if (splidDataElement[0] === "IMAGE") {
           if (splidDataElement[1] === "Size 1") { 
-            result = <div class="flex items-center justify-center h-screen"><img src={splidDataElement[2]} className="h-[calc(40rem))]  w-auto" alt="Image" /></div>
+            result = <div class="flex items-center justify-center h-screen"><img src={splidDataElement[2]} className="h-[calc(40rem))]  w-auto border-subMain" alt="Image" /></div>
           } else if (splidDataElement[1] === "Size 2") {
             result = <div class="flex items-center justify-center h-screen"><img src={splidDataElement[2]} className="h-[calc(35rem))] w-auto" alt="Image" /></div>           
           } else if (splidDataElement[1] === "Size 3") {
