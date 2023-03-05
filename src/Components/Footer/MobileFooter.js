@@ -1,15 +1,24 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { BsCollectionPlay } from 'react-icons/bs'
 import { FiHeart, FiUserCheck } from 'react-icons/fi'
 import {AiFillHome} from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
 
-function MobileFooter({nbrFav, login}) {
+function MobileFooter({nbrFav, loginStateParent}) {
 
   const active = "bg-white text-main"
   const inActive = "transitions text-2xl flex-colo hover:bg-white hover:text-main text-white rounded-md px-4 py-3"
 
   const Hover = ({isActive}) => isActive ? `${active} ${inActive}` : inActive
+
+  const [login, setLogin] = useState(false)
+  useEffect(() => {
+    if (loginStateParent === true) {
+      setLogin(true)
+    } else {
+      setLogin(false)
+    }
+  }, [loginStateParent]);
 
   return (
     <>
