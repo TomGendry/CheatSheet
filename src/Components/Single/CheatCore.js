@@ -74,7 +74,37 @@ function CheatCore({ cheat }) {
           } else if (splidDataElement[1] === "Citation") {
             result = <p className='relative italic font-normal text-white mx-5 my-3'><RiDoubleQuotesL className='mb-3'/>{splidDataElement[2]}<RiDoubleQuotesR className='mt-3'/></p>
           } else if (splidDataElement[1] === "Code") {
-            result = <p className='font-normal text-white mx-3 h-96 bg-code p-3 rounded'>{splidDataElement[2]}</p>
+            let codeSplit = splidDataElement[2].split(" ")
+            let final = []
+            for (let i = 0; i < codeSplit.length; i++) {
+              const word = codeSplit[i];
+
+              if (word.endsWith(".py")) {
+                final.push(<span style={{color: "#27ae60"}}>{word}</span>)
+              } else if (word.startsWith("-")) {
+                final.push(<span style={{color: "#9b59b6"}}>{word}</span>)
+              } else if (word === "SELECT" || word === "FROM" || word === "WHERE" || word === "INTO" || word === "RIGHT" || word === "LEFT" || word === "INNER" || word === "UPDATE"
+              || word === "DELETE" || word === "INTO" || word === "INSERT" || word === "VALUES" || word === "FIND_IN_SET" || word === "REPLACE") {
+                final.push(<span style={{color: "#3498db"}}>{word}</span>)
+              } else if (word.toLowerCase() === "for" || word.toLowerCase() === "while" || word.toLowerCase() === "if" || word.toLowerCase() === "else"
+              || word.toLowerCase() === "elif"){
+                final.push(<span style={{color: "#ED4C67"}}>{word}</span>)
+              } else if (word.toLowerCase() === "<p>" || word.toLowerCase() === "</p>" ||
+              word.toLowerCase() === "<span>" || word.toLowerCase() === "</span>" ||
+              word.toLowerCase() === "<h1>" || word.toLowerCase() === "</h1>" ||
+              word.toLowerCase() === "<h2>" || word.toLowerCase() === "</h2>" ||
+              word.toLowerCase() === "<h3>" || word.toLowerCase() === "</h3>" ||
+              word.toLowerCase() === "<div>" || word.toLowerCase() === "</div>" ||
+              word.toLowerCase() === "<img>" || word.toLowerCase() === "</img>" ||
+              word.toLowerCase() === "<strong>" || word.toLowerCase() === "</strong>") {
+                final.push(<span style={{color: "#833471"}}>{word}</span>)
+              } else {
+                final.push(<span style={{color: "#fff"}}>{word}</span>)
+              }
+
+            }
+            //result = <p className='font-normal text-white mx-3 h-96 bg-code p-3 rounded'>{splidDataElement[2]}</p>
+            result = <p className='font-normal text-white mx-3 bg-code p-3 rounded'>{final.join(" ")}</p>
           } 
         } else if (splidDataElement[0] === "IMAGE") {
           if (splidDataElement[1] === "Size 1") { 

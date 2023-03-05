@@ -41,6 +41,7 @@ function AddCheat() {
   ]
 
   useEffect(() => {
+
     Axios.get('https://cheatsheet-mysql.herokuapp.com/getAllCategories')
     .then((response) => {
         if (response.data !== false) {
